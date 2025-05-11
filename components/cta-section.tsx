@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
+import Link from "next/link"
 
 export function CtaSection() {
   return (
@@ -25,9 +26,11 @@ export function CtaSection() {
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.2 }}
         >
-          <Button className="bg-white dark:bg-transparent hover:bg-gray-200 dark:hover:bg-gray-900 text-black dark:text-white text-base md:text-lg px-6 py-5 md:px-8 md:py-6 rounded-md transition-all border border-gray-300 dark:border-gray-700">
-            Start Learning
-          </Button>
+          <Link href="https://eduapp.dakaei.com/dashboard/student">
+            <Button className="bg-white dark:bg-transparent hover:bg-gray-200 dark:hover:bg-gray-900 text-black dark:text-white text-base md:text-lg px-6 py-5 md:px-8 md:py-6 rounded-md transition-all border border-gray-300 dark:border-gray-700">
+              Start Learning
+            </Button>
+          </Link>
         </motion.div>
       </div>
     </section>

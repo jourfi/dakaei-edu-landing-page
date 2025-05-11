@@ -9,6 +9,7 @@ import { EducationalParticles } from "@/components/educational-particles"
 import { AnimatedMathFormulas } from "@/components/animated-math-formulas"
 import { LightBeamEffect } from "@/components/light-beam-effect"
 import { AnimatedEducationalIcons } from "@/components/animated-educational-icons"
+import Link from "next/link"
 
 export function HeroSection() {
   return (
@@ -95,9 +96,11 @@ export function HeroSection() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
           >
-            <Button className="bg-white dark:bg-gray-900 hover:bg-gray-200 dark:hover:bg-gray-800 text-black dark:text-white text-base md:text-lg px-6 py-5 md:px-8 md:py-6 rounded-md transition-all border border-gray-300 dark:border-gray-700">
-              Start Learning
-            </Button>
+            <Link href="https://eduapp.dakaei.com/dashboard/student">
+              <Button className="bg-white dark:bg-gray-900 hover:bg-gray-200 dark:hover:bg-gray-800 text-black dark:text-white text-base md:text-lg px-6 py-5 md:px-8 md:py-6 rounded-md transition-all border border-gray-300 dark:border-gray-700">
+                Start Learning
+              </Button>
+            </Link>
           </motion.div>
         </div>
       </div>
