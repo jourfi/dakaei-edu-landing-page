@@ -1,71 +1,70 @@
 "use client"
-
-import { useEffect, useRef } from "react"
-import { motion, useAnimation } from "framer-motion"
-import type React from "react"
+import { motion } from "framer-motion"
 
 interface PhysicsAnimationProps {
-  x: number
-  y: number
-  isActive: boolean
-  onComplete: () => void
+  position: {
+    top?: string
+    bottom?: string
+    left?: string
+    right?: string
+  }
+  delay?: number
 }
 
-export function PhysicsAnimation({ x, y, isActive, onComplete }: PhysicsAnimationProps) {
-  const controls = useAnimation()
-  const particlesRef = useRef<React.JSX.Element[]>([])
-
-  useEffect(() => {
-    if (isActive) {
-      // Create explosion effect
-      controls
-        .start({
-          opacity: [1, 0],
-          scale: [0, 1.5],
-          transition: { duration: 0.8 },
-        })
-        .then(onComplete)
-
-      // Generate particles
-      particlesRef.current = Array.from({ length: 12 }).map((_, i) => {
-        const angle = (i / 12) * Math.PI * 2
-        const distance = Math.random() * 100 + 50
-        const size = Math.random() * 10 + 5
-        const color = ["bg-blue-500", "bg-green-500", "bg-purple-500", "bg-red-500", "bg-yellow-500", "bg-pink-500"][
-          Math.floor(Math.random() * 6)
-        ]
-
-        return (
+export function PendulumAnimation({ position, delay = 0 }: PhysicsAnimationProps) {
+  return (
+    <motion.div
+      className="absolute z-10"
+      style={position}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 0.7 }}
+      transition={{ delay }}
+    >
+      <div className="relative w-20 h-24">
+        <div className="absolute top-0 left-1/2 w-px h-16 bg-gray-600 dark:bg-gray-400 origin-top">
           <motion.div
-            key={i}
-            className={`absolute rounded-full ${color}`}
-            style={{
-              width: size,
-              height: size,
-              x: 0,
-              y: 0,
-            }}
-            animate={{
-              x: Math.cos(angle) * distance,
-              y: Math.sin(angle) * distance,
-              opacity: [1, 0],
-              scale: [1, 0.5],
-            }}
+            className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-4 h-4 rounded-full bg-gray-700 dark:bg-gray-300"
+            animate={{ rotate: [-30, 30, -30] }}
             transition={{
-              duration: 0.8,
-              ease: "easeOut",
+              duration: 2,
+              repeat: Number.POSITIVE_INFINITY,
+              ease: "easeInOut",
             }}
           />
-        )
-      })
-    }
-  }, [isActive, controls, onComplete])
+        </div>
+      </div>
+    </motion.div>
+  )
+}
 
-  if (!isActive) return null
-
+export function OrbitalAnimation({ position, delay = 0 }: PhysicsAnimationProps) {
   return (
-    <motion.div className="absolute pointer-events-none z-50" style={{ x, y }} animate={controls}>
-      <div className="relative">{particlesRef.current}</div>
+    <motion.div
+      className="absolute z-10"
+      style={position}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 0.7 }}
+      transition={{ delay }}
+    >
+      <div className="relative w-24 h-24">
+        <div className="absolute inset-0 flex items-center justify-center">
+          <div className="w-3 h-3 rounded-full bg-blue-500 dark:bg-blue-400"></div>
+          <motion.div
+            className="absolute w-full h-full"
+            animate={{ rotate: 360 }}
+            transition={{ duration: 8, repeat: Number.POSITIVE_INFINITY, ease: "linear" }}
+          >
+            <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-2 h-2 rounded-full bg-red-500 dark:bg-red-400"></div>
+          </motion.div>
+          <motion.div
+            className="absolute w-full h-full"
+            animate={{ rotate: -360 }}
+            transition={{ duration: 12, repeat: Number.POSITIVE_INFINITY, ease: "linear" }}
+          >
+            <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-1/2 w-2 h-2 rounded-full bg-green-500 dark:bg-green-400"></div>
+          </motion.div>
+        </div>
+      </div>
     </motion.div>
   )
 }

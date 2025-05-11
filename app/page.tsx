@@ -13,8 +13,6 @@ import { AiInfrastructureSection } from "@/components/ai-infrastructure-section"
 import { CtaSection } from "@/components/cta-section"
 import { Footer } from "@/components/footer"
 import { Header } from "@/components/header"
-import { MathTooltip } from "@/components/math-tooltip"
-import { MathSymbols } from "@/components/math-symbols"
 
 export default function Home() {
   const [activeFeature, setActiveFeature] = useState<"video" | "whiteboard" | "graphing" | "practice" | "search">(
@@ -63,8 +61,6 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-white dark:bg-gray-950 overflow-x-hidden">
       <div className="absolute inset-0 bg-grid-pattern pointer-events-none"></div>
-      <MathTooltip />
-      <MathSymbols />
 
       <Header />
 

@@ -4,7 +4,7 @@ import type React from "react"
 
 import { useState } from "react"
 import Link from "next/link"
-import { Menu, X } from "lucide-react"
+import { Menu, X } from 'lucide-react'
 import { motion, AnimatePresence } from "framer-motion"
 import { ThemeToggle } from "@/components/theme-toggle"
 
@@ -61,7 +61,7 @@ export function MobileNav({ handleScrollClick }: MobileNavProps) {
                 Labs
               </a>
               <Link
-                href="#"
+                href="https://eduapp.dakaei.com"
                 className="text-gray-800 dark:text-gray-200 hover:text-black dark:hover:text-white transition-colors py-2"
                 onClick={toggleMenu}
               >

@@ -59,7 +59,7 @@ export function Header() {
           Labs
         </a>
         <Link
-          href="#"
+          href="https://eduapp.dakaei.com"
           className="text-gray-800 hover:text-black transition-colors dark:text-gray-200 dark:hover:text-white"
         >
           Log In

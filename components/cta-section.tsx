@@ -6,17 +6,6 @@ import { Button } from "@/components/ui/button"
 export function CtaSection() {
   return (
     <section className="py-16 md:py-24 bg-white dark:bg-black relative overflow-hidden px-4">
-      <div className="absolute right-0 bottom-0 w-64 md:w-96 h-64 md:h-96 opacity-20">
-        <svg viewBox="0 0 24 24" className="w-full h-full text-gray-400 dark:text-green-400">
-          <path
-            d="M2 21l10-10M12 11l9-9M12 11l-2 8M10 19l-2 2M10 19l2 2M17 6l1 1M17 6l-1 1"
-            stroke="currentColor"
-            strokeWidth="1"
-            fill="none"
-          />
-        </svg>
-      </div>
-
       <div className="container mx-auto text-center relative z-10">
         <motion.h2
           className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 md:mb-6 text-black dark:text-white"
